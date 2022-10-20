@@ -1,13 +1,41 @@
-<?php
-include("koneksi.php");
+<?php 
+include 'koneksi.php';
 ?>
-<html>
-<head>
-</head>
-<body>
+
   <h1>Data Pasien </h1>
   <h4> <a href=index.php> ke Halaman Utama</a></h4>
-  <table border="1">
+<form action="pasien.php" method="get">
+	<label>Cari :</label>
+	<input type="text" name="cari">
+	<input type="submit" value="Cari">
+</form>
+
+<?php 
+if(isset($_GET['cari'])){
+	$cari = $_GET['cari'];
+	echo "<b>Hasil pencarian : ".$cari."</b>";
+}
+?>
+
+<?php
+include("koneksi.php");?>
+<html>
+    <head>
+        <title></title>
+        <style>
+                body{
+              background-image: url('06da71a576bad3edf918a9ae8a82a3df.jpg');
+              color: white;
+              background-size: cover;
+              background-position: center;
+         text-align: center;
+         height: 100%;
+              font-family: arial;
+            }
+            </style>
+</head>
+<body>
+    <table border="1">
       <tr>
           <th>id</th>
           <th>nama</th>
@@ -21,11 +49,16 @@ include("koneksi.php");
           <th>gejala</th>
           <th>no_kamar</th>
 </tr>
-
 <?php
 include("koneksi.php");
-$sql='SELECT * FROM tb_pasien';
-$query = mysqli_query($koneksi, $sql);
+if(isset($_GET['cari'])){
+    $cari = $_GET['cari'];
+    $sql = "SELECT * FROM tb_pasien WHERE nama LIKE '%".$cari."%'";		
+    $query = mysqli_query($koneksi, $sql);		
+}else{
+   $sql='SELECT *FROM tb_pasien';
+   $query = mysqli_query($koneksi, $sql);		
+}
 
 while($pasien=mysqli_fetch_array($query)){
     echo "<tr>";
