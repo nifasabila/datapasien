@@ -18,7 +18,7 @@ if(mysqli_num_rows($query) < 1){
 </head>
 <body>
     <h1>Form Edit</h1>
-    <form action="proses_tambah.php" method="POST">
+    <form action="proses_edit.php" method="POST">
             <fieldset>
                 <input type="hidden" name="id" value="<?php echo $pasien['id']?>" />
                 <p>
@@ -54,8 +54,8 @@ if(mysqli_num_rows($query) < 1){
         </select> 
     </p>
     <p>
-        <label for="no_telpon"> No Telepon : </label>
-        <input type="decimal" name="no_telpon" value="<?php echo $pasien['no_telpon']?>"/>
+        <label for="no_telfon"> No Telepon : </label>
+        <input type="decimal" name="no_telfon" value="<?php echo $pasien['no_telfon']?>"/>
     </p>
     <p>
         <label for="tanggal_masuk"> Tanggal Masuk : </label>
